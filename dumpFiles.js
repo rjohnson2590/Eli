@@ -11,18 +11,29 @@ commander
 	.parse(process.argv);
 
 var filenames = commander.args;
-
-
-
-function dumpfiles(filename) {
-	fs.readFile(filename, {encoding: 'utf8'}, function(
-		error, contents){
-		console.log(contents);
-
-		if(filenames.length > 0){
-		dumpfiles(filenames.pop());
-	}	
+var noo=[];
+filenames.forEach(function(filename) {
+	fs.readFile(filename, {encoding: 'utf8'}, function(error, contents){
+		var arg=[];
+		var len= contents.split(" ")
+		// console.log(len.length);
+		arg.push(len);
+		console.log(arg)
 	});
+});
+
+
+// function dumpfiles(filename) {
+// 	fs.readFile(filename, {encoding: 'utf8'}, function(
+// 		error, contents){
+// 		var len= contents.split(" ")
+// 		console.log(len.length);
+
+
+// 		if(filenames.length > 0){
+// 		dumpfiles(filenames.pop());
+// 	}	
+// 	});
 // 	fs.readFile(filename, {encoding: 'utf8'}, function(
 // 		error, contents){
 // 		console.log(contents);
@@ -31,8 +42,8 @@ function dumpfiles(filename) {
 // 		dumpfiles(filenames.pop());
 // 	}
 // });
-}
+// }
 
-if(commander.read){
-dumpfiles(filenames.pop());
-}
+// if(commander.read){
+// dumpfiles(filenames.pop());
+// }
